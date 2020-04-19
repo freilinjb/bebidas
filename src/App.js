@@ -7,18 +7,23 @@ import LIstaRecetas from './components/LIstaRecetas';
 //la funcion hola esta disponible en todos los componentes
 import CategoriaProvider from './context/CategoriasContext';
 import RecetasProvider from './context/RecetasContext';
+import ModalProvider from './context/ModalContext';
 
 function App() {
   return (
     <CategoriaProvider>
       <RecetasProvider>
+        <ModalProvider>
         <Header/>
-        <div className="container mt-5">
-          <div className="row justify-content-center">
-            <Formulario/>
+
+          <div className="container mt-5">
+            <div className="row justify-content-center">
+              <Formulario/>
+            </div>
+            <LIstaRecetas/>
           </div>
-          <LIstaRecetas/>
-        </div>
+
+        </ModalProvider>
       </RecetasProvider>
     </CategoriaProvider>
   );
