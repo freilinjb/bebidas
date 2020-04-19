@@ -30,6 +30,8 @@ const Formulario = () => {
             buscarRecetas(busqueda);
             //Cambia el estado para realizar la consulta en el
             //Context Recetas
+
+            //Probado en log
             
         }}>
             <fieldset className="text-center">
