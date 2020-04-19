@@ -1,6 +1,7 @@
 import React, {createContext, useState, useEffect} from 'react';
-export const RecetasContext = createContext();
 import Axios from 'axios';
+
+export const RecetasContext = createContext();
 
 const RecetasProvider = (props) => {
 
@@ -12,10 +13,19 @@ const RecetasProvider = (props) => {
 
     const [consultar, setGuardarConsultas] = useEffect(false);
     
-    const { nombre, categoria } = busqueda;
+    const { nombre, categoria } = buscarRecetas;
 
     useEffect(() =>     {
-        const usrl = `https://thecocktaildb.com/api/json/v1/1/filter.php?i=${nombre}&c=${categoria}`;
+
+        if(consultar) {
+            const obtenerRecetas = async () => {
+                const url = `https://thecocktaildb.com/api/json/v1/1/filter.php?i=${nombre}&c=${categoria}`;
+                
+                console.log(url);
+            }
+
+            obtenerRecetas();
+        }
 
     }, [buscarRecetas]);
     return (
