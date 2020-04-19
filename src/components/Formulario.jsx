@@ -12,7 +12,8 @@ const Formulario = () => {
 
     //toma el context para tener disponible todo lo que este en el value
     const { categorias } = useContext(CategoriasContext);
-    const { buscarRecetas } = useContext(RecetasContext);
+    //guarda la busque desde desde el context Recetas
+    const { buscarRecetas, guardarConsultar } = useContext(RecetasContext);
 
     //funcion para leer los contenidos
     const obtenerDatosReceta = e => {
@@ -25,7 +26,11 @@ const Formulario = () => {
     return ( 
         <form onSubmit={ e=> {
             e.preventDefault(); 
+            guardarConsultar(true);
             buscarRecetas(busqueda);
+            //Cambia el estado para realizar la consulta en el
+            //Context Recetas
+            
         }}>
             <fieldset className="text-center">
                 <legend>Buscar bebidas por Categorias o Ingredientes </legend>

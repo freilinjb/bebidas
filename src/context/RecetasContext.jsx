@@ -1,4 +1,4 @@
-import React,{ createContext, useState} from 'react';
+import React,{ createContext, useState, useEffect} from 'react';
 
 export const RecetasContext = createContext();
 
@@ -10,13 +10,25 @@ const RecetasProvider = (props) => {
         nombre:'',
         categoria:''
     });
+    const [consultar, guardarConsultar] = useState(false);
+
+    const { nombre, categoria } = busqueda;
+
+    useEffect(() => {
+        //verifica que se preciono el boton 
+        if(consultar) {
+            const obtenerRecetas = async () => {
+                const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${nombre}&c=${categoria}`;
+                console.log(url); 
+            }
+            obtenerRecetas();
+        }
+        //se  ejecuta cada vez que cambie la busqueda
+    },[busqueda]);
 
     return ( 
         <RecetasContext.Provider
-            value={{
-                buscarRecetas
-            }} 
-        >
+            value={{buscarRecetas,guardarConsultar}} >
             {props.children}
         </RecetasContext.Provider>
      );
