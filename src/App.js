@@ -6,12 +6,10 @@ import LIstaRecetas from './components/LIstaRecetas';
 //cambio por Fargment porque el Context fluye los datos hacia abajo =
 //la funcion hola esta disponible en todos los componentes
 import CategoriaProvider from './context/CategoriasContext';
-import RecetasProvider from './context/RecetasContext';
 
 function App() {
   return (
     <CategoriaProvider>
-      <RecetasProvider>
         <Header/>
         <div className="container mt-5">
           <div className="row justify-content-center">
@@ -19,7 +17,6 @@ function App() {
           </div>
           <LIstaRecetas/>
         </div>
-      </RecetasProvider>
     </CategoriaProvider>
   );
 }
