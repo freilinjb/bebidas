@@ -44,7 +44,7 @@ const Receta = ({receta}) => {
     //extrar los valores del context
     const { informacion, guardarIdReceta } = useContext(ModalContext);
     //Prueba 
-    console.log(informacion);
+    console.log('Prueba',informacion);
     
  
     const { strDrinkThumb, strDrink, idDrink} = receta;
@@ -73,9 +73,13 @@ const Receta = ({receta}) => {
                     }}
                     >
                         <div style={modalStyled} className={classes.paper}>
-                            <h1>Hola desde el Modal</h1>
+                            <h2>{informacion.strDrink}</h2>
+                            <h3 className="mt-4">Instrucciones</h3>
+                            <p>{informacion.strInstructions}</p>
+                            
+                            <img src={strDrinkThumb} alt={`Imagen de ${strDrink}`} className="img-fluid my-4"/>
                         </div>
-                    </Modal>
+                    </Modal> 
                 </div>
             </div>
         </div>

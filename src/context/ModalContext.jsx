@@ -18,7 +18,8 @@ const ModalProvider = (props) => {
             const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idreceta}`;
 
             const resultado = await Axios.get(url);
-            console.log(resultado.data.drinks[0]);
+            // console.log(resultado.data.drinks[0]);
+            guardarReceta(resultado.data.drinks[0]);
             
              
         }
@@ -29,6 +30,7 @@ const ModalProvider = (props) => {
         <ModalContext.Provider
             value={{
                 informacion,
+                guardarReceta,
                 guardarIdReceta
             }}    
         >
