@@ -8,6 +8,7 @@ const ModalProvider = (props) => {
 
     //state del provider
     const [idreceta, guardarIdReceta ] = useState(null);
+    const [receta, guardarReceta] = useState({});
 
     //una vez que tenemos una receta, llamar a la API
     useEffect(() => {
