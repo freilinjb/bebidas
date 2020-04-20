@@ -40,10 +40,14 @@ const Receta = ({receta}) => {
     const handleClose = () => {
         setOpen(false);
     }
+
+    //extrar los valores del context
+    const { informacion, guardarIdReceta } = useContext(ModalContext);
+    //Prueba 
+    console.log(informacion);
+    
  
     const { strDrinkThumb, strDrink, idDrink} = receta;
-    //Extraer los valores del context
-    const { guardarIdReceta } = useContext(ModalContext);
     
     return ( 
         <div className="col-md-4 mb-3">
