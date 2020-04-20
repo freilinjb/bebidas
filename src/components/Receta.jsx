@@ -42,12 +42,25 @@ const Receta = ({receta}) => {
     }
 
     //extrar los valores del context
-    const { informacion, guardarIdReceta } = useContext(ModalContext);
+    const { informacion, guardarIdReceta, guardarReceta } = useContext(ModalContext);
     //Prueba 
     console.log('Prueba',informacion);
     
  
     const { strDrinkThumb, strDrink, idDrink} = receta;
+
+    //Muestra y formatea los ingredientes
+    const mostrarIngrerdientes = informacion => {
+        let ingrerdientes = [];
+        for(let i = 1;i < 16; i++) {
+            if(informacion[`strIngredient${i}`]) {
+                ingrerdientes.push(
+                <li>{informacion[`strIngredient${i}`]} : {informacion[`strMeasure${i}`]} </li>
+                )
+            }
+        }
+        return ingrerdientes;
+    }
     
     return ( 
         <div className="col-md-4 mb-3">
@@ -70,6 +83,8 @@ const Receta = ({receta}) => {
                         //cambia el id a null
                         guardarIdReceta(null);
                         handleClose();
+                        //Cuando se cierra el modal cambia el objeto al objeto vacio
+                        guardarReceta({});
                     }}
                     >
                         <div style={modalStyled} className={classes.paper}>
@@ -78,6 +93,12 @@ const Receta = ({receta}) => {
                             <p>{informacion.strInstructions}</p>
                             
                             <img src={strDrinkThumb} alt={`Imagen de ${strDrink}`} className="img-fluid my-4"/>
+                            <h3>Ingredientes y Cantidades</h3>
+                            <ul>
+                                {
+                                    mostrarIngrerdientes(informacion)
+                                }
+                            </ul>
                         </div>
                     </Modal> 
                 </div>
